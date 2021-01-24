@@ -27,24 +27,37 @@ const userSchema = mongoose.Schema({
     type: String
   },
   locations: {
-    type: [{ type: String }],
+    type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Topic' }],
     select: false
   },
   business: {
-    type: String,
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Topic',
     select: false
   },
   employments: {
     type: [{
-      company: { type: String },
-      job: { type: String }
+      company: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Topic'
+      },
+      job: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Topic'
+      }
     }],
     select: false
   },
   educations: {
     type: [{
-      school: { type: String },
-      major: { type: String },
+      school: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Topic'
+      },
+      major: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Topic'
+      },
       diploma: { type: Number, enum: [1, 2, 3, 4, 5] },
       entranceYear: { type: Number },
       graduationYear: { type: Number }
@@ -55,6 +68,13 @@ const userSchema = mongoose.Schema({
     type: [{
       type: mongoose.Schema.Types.ObjectId,
       ref: 'User'
+    }],
+    select: false
+  },
+  followingTopics: {
+    type: [{
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Topic'
     }],
     select: false
   }

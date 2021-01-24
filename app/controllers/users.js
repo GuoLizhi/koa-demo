@@ -1,16 +1,34 @@
 const User = require('../models/users')
 const jsonwebtoken = require('jsonwebtoken')
+const Topic = require('../models/topics')
 
 class UsersController {
   async getAll (ctx) {
-    ctx.body = await User.find()
+    const pageSize = Math.max(+ctx.query.pageSize, 1)
+    const pageNo = Math.max(+ctx.query.pageNo - 1, 0)
+    ctx.body = await User.find({ name: new RegExp(ctx.query.q) })
+      .limit(pageSize)
+      .skip(pageNo * pageSize)
   }
 
   async getById (ctx) {
     const { fields } = ctx.query
     const selectFields = fields.split(';').filter(Boolean).map(field => ` +${field}`).join('')
+    const populateStr = fields.split(';')
+      .filter(Boolean)
+      .map(field => {
+        if (field === 'employments') {
+          return 'employments.company employments.job'
+        }
+        if (field === 'educations') {
+          return 'educations.school educations.major'
+        }
+        return field
+      })
     const id = ctx.params.id
-    ctx.body = await User.findById(id).select(selectFields)
+    ctx.body = await User.findById(id)
+      .select(selectFields)
+      .populate(populateStr)
   }
 
   async create (ctx) {
@@ -145,6 +163,53 @@ class UsersController {
       ctx.throw(404, '用户不存在')
     }
     await next()
+  }
+
+  // 用户关注话题
+  async followTopic (ctx) {
+    const me = await User.findById(ctx.state.user._id)
+      .select('+followingTopics')
+    if (!me.followingTopics.map(id => id.toString()).includes(ctx.params.id)) {
+      me.followingTopics.push(ctx.params.id)
+      await me.save()
+    }
+    ctx.status = 204
+  }
+
+  /**
+   * 用户取关话题
+   */
+  async unfollowTopic (ctx) {
+    const me = await User.findById(ctx.state.user._id)
+      .select('+followingTopics')
+    const index = me.followingTopics
+      .map(id => id.toString())
+      .indexOf(ctx.params.id)
+    if (index > -1) {
+      me.followingTopics.splice(index, 1)
+      await me.save()
+    }
+    ctx.status = 204
+  }
+
+  /**
+   * 检测话题是否存在 中间件
+   */
+  async checkTopicExist (ctx, next) {
+    const topic = await Topic.findById(ctx.params.id)
+    if (!topic) ctx.throw(404, '话题不存在')
+    await next()
+  }
+
+  /**
+   * 查询用户关注的话题
+   */
+  async listFollowingTopics (ctx, next) {
+    const user = await User.findById(ctx.params.id)
+      .select('+followingTopics')
+      .populate('followingTopics')
+    if (!user) ctx.throw(404, '用户不存在')
+    ctx.body = user.followingTopics
   }
 }
 

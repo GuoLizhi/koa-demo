@@ -4,7 +4,9 @@ const router = new Router({ prefix: '/users' })
 const {
   getAll, getById, create, update,
   del, login, checkOwner, listFollowing,
-  follow, unfollow, listFollowers, checkUserExist
+  follow, unfollow, listFollowers, checkUserExist,
+  followTopic, unfollowTopic, checkTopicExist,
+  listFollowingTopics
 } = require('../controllers/users')
 
 const auth = jwt({
@@ -20,5 +22,9 @@ router.get('/:id/following', listFollowing)
 router.put('/follow/:id', auth, checkUserExist, follow)
 router.delete('/unfollow/:id', auth, checkUserExist, unfollow)
 router.get('/:id/followers', listFollowers)
+
+router.put('/followingTopics/:id', auth, checkTopicExist, followTopic)
+router.delete('/followingTopics/:id', auth, checkTopicExist, unfollowTopic)
+router.get('/:id/followingTopics', listFollowingTopics)
 
 module.exports = router

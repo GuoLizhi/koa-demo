@@ -1,11 +1,13 @@
 const Topic = require('../models/topics')
+const User = require('../models/users')
 
 class TopicController {
   // 获取所有的主题
   async find (ctx) {
     const pageSize = Math.max(+ctx.query.pageSize, 1)
     const pageNo = Math.max(+ctx.query.pageNo - 1, 0)
-    ctx.body = await Topic.find()
+    // 模糊搜索
+    ctx.body = await Topic.find({ name: new RegExp(ctx.query.q) })
       .limit(pageSize)
       .skip(pageNo * pageSize)
   }
@@ -60,6 +62,14 @@ class TopicController {
     })
     const topic = await Topic.findByIdAndUpdate(ctx.params.id, ctx.request.body)
     ctx.body = Object.assign(topic, ctx.request.body)
+  }
+
+  // 获取一个话题所有的粉丝
+  async listTopicFollowers (ctx) {
+    const users = await User.find({
+      followingTopics: ctx.params.id
+    })
+    ctx.body = users
   }
 }
 
