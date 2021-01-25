@@ -7,10 +7,9 @@ const parameter = require('koa-parameter')
 const koaStatic = require('koa-static')
 const genRoutes = require('./routes')
 
-
 const app = new Koa()
 
-function formatError(err) {
+function formatError (err) {
   return {
     status: err.status,
     message: err.message,
