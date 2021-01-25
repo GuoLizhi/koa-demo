@@ -1,6 +1,7 @@
 const User = require('../models/users')
 const jsonwebtoken = require('jsonwebtoken')
 const Topic = require('../models/topics')
+const Question = require('../models/questions ')
 
 class UsersController {
   async getAll (ctx) {
@@ -210,6 +211,12 @@ class UsersController {
       .populate('followingTopics')
     if (!user) ctx.throw(404, '用户不存在')
     ctx.body = user.followingTopics
+  }
+
+  // 列出本用户所有的提问
+  async listQuestions (ctx) {
+    const questions = await Question.find({ questioner: ctx.params.id })
+    ctx.body = questions
   }
 }
 

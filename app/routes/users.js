@@ -6,7 +6,8 @@ const {
   del, login, checkOwner, listFollowing,
   follow, unfollow, listFollowers, checkUserExist,
   followTopic, unfollowTopic, checkTopicExist,
-  listFollowingTopics
+  listFollowingTopics,
+  listQuestions
 } = require('../controllers/users')
 
 const auth = jwt({
@@ -26,5 +27,7 @@ router.get('/:id/followers', listFollowers)
 router.put('/followingTopics/:id', auth, checkTopicExist, followTopic)
 router.delete('/followingTopics/:id', auth, checkTopicExist, unfollowTopic)
 router.get('/:id/followingTopics', listFollowingTopics)
+
+router.get('/:id/questions', listQuestions)
 
 module.exports = router
