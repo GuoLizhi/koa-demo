@@ -91,6 +91,13 @@ const userSchema = mongoose.Schema({
       ref: 'Answer'
     }],
     select: false
+  },
+  collectingAnswers: {
+    type: [{
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Answer'
+    }],
+    select: false
   }
 })
 const User = mongoose.model('User', userSchema)

@@ -301,6 +301,38 @@ class UsersController {
     }
     ctx.status = 204
   }
+
+  // 列出用户收藏列表
+  async listCollectingAnswers (ctx) {
+    const user = await User.findById(ctx.params.id)
+      .select('+collectingAnswers')
+      .populate('collectingAnswers')
+    if (!user) ctx.throw(404, '用户不存在')
+    ctx.body = user.collectingAnswers
+  }
+
+  // 用户收藏答案
+  async collectAnswer (ctx, next) {
+    const me = await User.findById(ctx.state.user._id)
+      .select('+collectingAnswers')
+    if (!me.collectingAnswers.map(id => id.toString()).includes(ctx.params.id)) {
+      me.collectingAnswers.push(ctx.params.id)
+      await me.save()
+    }
+    ctx.status = 204
+    await next()
+  }
+
+  // 用户取消收藏答案
+  async uncollectAnswer (ctx) {
+    const me = await User.findById(ctx.state.user._id).select('+collectingAnswers')
+    const index = me.collectingAnswers.map(id => id.toString()).indexOf(ctx.params.id)
+    if (index > -1) {
+      me.collectingAnswers.splice(index, 1)
+      await me.save()
+    }
+    ctx.status = 204
+  }
 }
 
 module.exports = new UsersController()
