@@ -1,0 +1,24 @@
+[2021-01-26T18:03:49.786] [ERROR] application - { CastError: Cast to ObjectId failed for value "600fd473ca362105d8e92ce61" at path "_id" for model "User"
+    at model.Query.exec (/Users/guolizhi/test/zhihu/node_modules/mongoose/lib/query.js:4358:21)
+    at model.Query.Query.then (/Users/guolizhi/test/zhihu/node_modules/mongoose/lib/query.js:4450:15)
+  messageFormat: undefined,
+  stringValue: '"600fd473ca362105d8e92ce61"',
+  kind: 'ObjectId',
+  value: '600fd473ca362105d8e92ce61',
+  path: '_id',
+  reason:
+   Error: Argument passed in must be a single String of 12 bytes or a string of 24 hex characters
+       at new ObjectID (/Users/guolizhi/test/zhihu/node_modules/bson/lib/bson/objectid.js:59:11)
+       at castObjectId (/Users/guolizhi/test/zhihu/node_modules/mongoose/lib/cast/objectid.js:25:12)
+       at ObjectId.cast (/Users/guolizhi/test/zhihu/node_modules/mongoose/lib/schema/objectid.js:279:12)
+       at ObjectId.SchemaType.applySetters (/Users/guolizhi/test/zhihu/node_modules/mongoose/lib/schematype.js:1090:12)
+       at ObjectId.SchemaType._castForQuery (/Users/guolizhi/test/zhihu/node_modules/mongoose/lib/schematype.js:1525:15)
+       at ObjectId.SchemaType.castForQuery (/Users/guolizhi/test/zhihu/node_modules/mongoose/lib/schematype.js:1515:15)
+       at ObjectId.SchemaType.castForQueryWrapper (/Users/guolizhi/test/zhihu/node_modules/mongoose/lib/schematype.js:1492:20)
+       at cast (/Users/guolizhi/test/zhihu/node_modules/mongoose/lib/cast.js:331:32)
+       at model.Query.Query.cast (/Users/guolizhi/test/zhihu/node_modules/mongoose/lib/query.js:4759:12)
+       at model.Query.Query._castConditions (/Users/guolizhi/test/zhihu/node_modules/mongoose/lib/query.js:1841:10)
+       at model.Query.<anonymous> (/Users/guolizhi/test/zhihu/node_modules/mongoose/lib/query.js:2098:8)
+       at model.Query._wrappedThunk [as _findOne] (/Users/guolizhi/test/zhihu/node_modules/mongoose/lib/helpers/query/wrapThunk.js:16:8)
+       at process.nextTick (/Users/guolizhi/test/zhihu/node_modules/kareem/index.js:370:33)
+       at process._tickCallback (internal/process/next_tick.js:61:11) }

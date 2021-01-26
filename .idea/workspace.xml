@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="3318e261-8e4e-4e1e-88a5-9fad48f55193" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/zhihu.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/utils/log.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/users.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/users.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/answers.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/answers.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/questions.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/questions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/routes/users.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/routes/users.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1nbK4Qdk4iS4VWnpNp6ArXz3Dy0" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+    <option name="showMembers" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.standard" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.standard" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.standard" value="$USER_HOME$/.nvm/versions/node/v10.15.3/lib/node_modules/standard" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="nodejs_package_manager_path" value="yarn" />
+    <property name="settings.editor.selected.configurable" value="com.eslint.settings.ESLintSettingsPage" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RunManager">
+    <configuration name="dev" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="dev" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="npm.dev" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="3318e261-8e4e-4e1e-88a5-9fad48f55193" name="Default Changelist" comment="" />
+      <created>1611653160296</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1611653160296</updated>
+      <workItem from="1611653162057" duration="1912000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state width="1847" height="569" key="GridCell.Tab.0.bottom" timestamp="1611655505868">
+      <screen x="0" y="23" width="1868" height="1057" />
+    </state>
+    <state width="1847" height="569" key="GridCell.Tab.0.bottom/-1440.143.1440.877/0.23.1868.1057@0.23.1868.1057" timestamp="1611655505868" />
+    <state width="1847" height="569" key="GridCell.Tab.0.center" timestamp="1611655505866">
+      <screen x="0" y="23" width="1868" height="1057" />
+    </state>
+    <state width="1847" height="569" key="GridCell.Tab.0.center/-1440.143.1440.877/0.23.1868.1057@0.23.1868.1057" timestamp="1611655505866" />
+    <state width="1847" height="569" key="GridCell.Tab.0.left" timestamp="1611655505866">
+      <screen x="0" y="23" width="1868" height="1057" />
+    </state>
+    <state width="1847" height="569" key="GridCell.Tab.0.left/-1440.143.1440.877/0.23.1868.1057@0.23.1868.1057" timestamp="1611655505866" />
+    <state width="1847" height="569" key="GridCell.Tab.0.right" timestamp="1611655505867">
+      <screen x="0" y="23" width="1868" height="1057" />
+    </state>
+    <state width="1847" height="569" key="GridCell.Tab.0.right/-1440.143.1440.877/0.23.1868.1057@0.23.1868.1057" timestamp="1611655505867" />
+    <state x="443" y="190" key="SettingsEditor" timestamp="1611654842755">
+      <screen x="0" y="23" width="1868" height="1057" />
+    </state>
+    <state x="443" y="190" key="SettingsEditor/-1440.143.1440.877/0.23.1868.1057@0.23.1868.1057" timestamp="1611654842755" />
+  </component>
+</project>

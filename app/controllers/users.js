@@ -1,15 +1,21 @@
 const User = require('../models/users')
 const jsonwebtoken = require('jsonwebtoken')
 const Topic = require('../models/topics')
-const Question = require('../models/questions ')
+const Question = require('../models/questions')
+const logger = require('../utils/log')
 
 class UsersController {
   async getAll (ctx) {
     const pageSize = Math.max(+ctx.query.pageSize, 1)
     const pageNo = Math.max(+ctx.query.pageNo - 1, 0)
-    ctx.body = await User.find({ name: new RegExp(ctx.query.q) })
-      .limit(pageSize)
-      .skip(pageNo * pageSize)
+    try {
+      ctx.body = await User.find({ name: new RegExp(ctx.query.q) })
+        .limit(pageSize)
+        .skip(pageNo * pageSize)
+    } catch (err) {
+      logger.error(err)
+      ctx.throw(404, '查询用户信息失败!')
+    }
   }
 
   async getById (ctx) {
@@ -27,9 +33,14 @@ class UsersController {
         return field
       })
     const id = ctx.params.id
-    ctx.body = await User.findById(id)
-      .select(selectFields)
-      .populate(populateStr)
+    try {
+      ctx.body = await User.findById(id)
+        .select(selectFields)
+        .populate(populateStr)
+    } catch (err) {
+      logger.error(err)
+      ctx.throw(404, '查询用户信息失败!')
+    }
   }
 
   async create (ctx) {
@@ -105,6 +116,7 @@ class UsersController {
     ctx.status = 204
   }
 
+  // 监测要操作的用户是否是当前用户
   async checkOwner (ctx, next) {
     if (ctx.params.id !== ctx.state.user._id) {
       ctx.throw(403, '没有权限')

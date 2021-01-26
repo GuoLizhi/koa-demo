@@ -1,4 +1,4 @@
-const { Schema, model } = require('../index')
+const { Schema, model } = require('./index')
 
 const questionSchema = new Schema({
   __v: {
