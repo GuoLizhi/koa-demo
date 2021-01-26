@@ -77,6 +77,20 @@ const userSchema = mongoose.Schema({
       ref: 'Topic'
     }],
     select: false
+  },
+  likingAnswers: {
+    type: [{
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Answer'
+    }],
+    select: false
+  },
+  dislikingAnswers: {
+    type: [{
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Answer'
+    }],
+    select: false
   }
 })
 const User = mongoose.model('User', userSchema)

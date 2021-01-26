@@ -7,8 +7,15 @@ const {
   follow, unfollow, listFollowers, checkUserExist,
   followTopic, unfollowTopic, checkTopicExist,
   listFollowingTopics,
-  listQuestions
+  listQuestions,
+  likeAnswer,
+  unlikeAnswer,
+  listLikingAnswers,
+  dislikeAnswer,
+  undislikeAnswer,
+  listDislikingAnswers
 } = require('../controllers/users')
+const { checkAnswerExist } = require('../controllers/answers')
 
 const auth = jwt({
   secret: process.env.JWt_SECRET
@@ -39,5 +46,13 @@ router.put('/followingTopics/:id', auth, checkTopicExist, followTopic)
 router.delete('/followingTopics/:id', auth, checkTopicExist, unfollowTopic)
 router.get('/:id/followingTopics', listFollowingTopics)
 router.get('/:id/questions', listQuestions)
+
+router.put('/likingAnswer/:id', auth, checkAnswerExist, likeAnswer, undislikeAnswer)
+router.delete('/likingAnswer/:id', auth, checkAnswerExist, unlikeAnswer)
+router.get('/:id/likingAnswer', listLikingAnswers)
+
+router.put('/dislikingAnswer/:id', auth, checkAnswerExist, dislikeAnswer, unlikeAnswer)
+router.delete('/dislikingAnswer/:id', auth, checkAnswerExist, undislikeAnswer)
+router.get('/:id/dislikingAnswer', listDislikingAnswers)
 
 module.exports = router
