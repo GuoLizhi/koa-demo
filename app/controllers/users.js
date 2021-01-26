@@ -2,7 +2,7 @@ const User = require('../models/users')
 const jsonwebtoken = require('jsonwebtoken')
 const Topic = require('../models/topics')
 const Question = require('../models/questions')
-const logger = require('../utils/log')
+const { logger } = require('../utils/log')
 
 class UsersController {
   async getAll (ctx) {

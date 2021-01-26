@@ -7,14 +7,24 @@ log4js.configure({
       type: 'dateFile',
       pattern: '-yyyy-MM-dd.log',
       filename: path.join(__dirname, '../logs/', 'application.log')
+    },
+    access: {
+      type: 'dateFile',
+      pattern: '-yyyy-MM-dd.log',
+      filename: path.join(__dirname, '../logs/', 'access.log')
     }
   },
   categories: {
     default: {
       appenders: ['application'],
       level: 'error'
+    },
+    access: {
+      appenders: ['access'],
+      level: 'error'
     }
   }
 })
 
-module.exports = log4js.getLogger('application')
+exports.logger = log4js.getLogger('application')
+exports.accessLogger = log4js.getLogger('access')
