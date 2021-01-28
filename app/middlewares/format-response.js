@@ -9,18 +9,19 @@ class Response {
   }
 }
 const errMap = {
-  401: '请先登录！'
+  401: '请先登录！',
+  422: '您输入的字段不正确！'
 }
 module.exports = function (ctx) {
   const { status, body = {} } = ctx
   if ([200, 204].includes(status)) {
-    return new Response(`RP00${status}`, body, '请求成功')
+    return new Response(`RP${status}00`, body, '请求成功')
   } else {
     const message = errMap[status] || body.message || '系统繁忙，请稍后重试！'
     accessLogger.error({
       message,
       userId: get(ctx, 'state.user._id') || '未登录'
     })
-    return new Response(`RP00${status}`, null, message)
+    return new Response(`RP${status}00`, null, message)
   }
 }

@@ -1,11 +1,21 @@
 const Router = require('koa-router')
-const jwt = require('koa-jwt')
 const router = new Router({ prefix: '/users' })
 const {
-  getAll, getById, create, update,
-  del, login, checkOwner, listFollowing,
-  follow, unfollow, listFollowers, checkUserExist,
-  followTopic, unfollowTopic, checkTopicExist,
+  getAllUser,
+  getUserById,
+  register,
+  updateUser,
+  delUser,
+  login,
+  checkOwner,
+  listFollowing,
+  follow,
+  unfollow,
+  listFollowers,
+  checkUserExist,
+  followTopic,
+  unfollowTopic,
+  checkTopicExist,
   listFollowingTopics,
   listQuestions,
   likeAnswer,
@@ -19,30 +29,33 @@ const {
   uncollectAnswer
 } = require('../controllers/users')
 const { checkAnswerExist } = require('../controllers/answers')
-
-const auth = jwt({
-  secret: process.env.JWt_SECRET
-})
+const auth = require('../middlewares/jwt-auth')
 
 // 注册
-router.post('/', create)
+router.post('/', register)
 
 // 登录
 router.post('/login', login)
 
 // 获取所有用户-支持分页
-router.get('/', auth, getAll)
+router.get('/', auth, getAllUser)
 
 // 通过用户id来获取用户信息，支持通过字段查询
-router.get('/:id', auth, getById)
+router.get('/:id', auth, getUserById)
 
 // 更新用户信息
-router.patch('/:id', auth, checkOwner, update)
+router.patch('/:id', auth, checkOwner, updateUser)
 
 // 删除用户信息
-router.delete('/:id', auth, checkOwner, del)
+router.delete('/:id', auth, checkOwner, delUser)
+
+// 列出某个用户的粉丝
 router.get('/:id/following', listFollowing)
+
+// 关注某人
 router.put('/follow/:id', auth, checkUserExist, follow)
+
+// 取消关注某人
 router.delete('/unfollow/:id', auth, checkUserExist, unfollow)
 router.get('/:id/followers', listFollowers)
 router.put('/followingTopics/:id', auth, checkTopicExist, followTopic)
