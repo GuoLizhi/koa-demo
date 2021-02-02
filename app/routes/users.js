@@ -57,22 +57,47 @@ router.put('/follow/:id', auth, checkUserExist, follow)
 
 // 取消关注某人
 router.delete('/unfollow/:id', auth, checkUserExist, unfollow)
+
+// 获取用户的粉丝列表
 router.get('/:id/followers', listFollowers)
+
+// 用户关注其他用户
 router.put('/followingTopics/:id', auth, checkTopicExist, followTopic)
+
+// 用户取关其他用户
 router.delete('/followingTopics/:id', auth, checkTopicExist, unfollowTopic)
+
+// 获取用户的话题关注列表
 router.get('/:id/followingTopics', listFollowingTopics)
+
+// 获取用户关注的问题列表
 router.get('/:id/questions', listQuestions)
 
+// 点赞
 router.put('/likingAnswer/:id', auth, checkAnswerExist, likeAnswer, undislikeAnswer)
+
+// 取消点赞
 router.delete('/likingAnswer/:id', auth, checkAnswerExist, unlikeAnswer)
+
+// 列出用户点赞列表
 router.get('/:id/likingAnswer', listLikingAnswers)
 
+// 踩
 router.put('/dislikingAnswer/:id', auth, checkAnswerExist, dislikeAnswer, unlikeAnswer)
+
+// 取消踩
 router.delete('/dislikingAnswer/:id', auth, checkAnswerExist, undislikeAnswer)
+
+// 列出用户所有踩的列表
 router.get('/:id/dislikingAnswer', listDislikingAnswers)
 
+// 收藏答案
 router.put('/collectingAnswer/:id', auth, checkAnswerExist, collectAnswer)
+
+// 取消收藏答案
 router.delete('/collectingAnswer/:id', auth, checkAnswerExist, uncollectAnswer)
+
+// 获取用户所有收藏答案列表
 router.get('/:id/collectingAnswer', listCollectingAnswers)
 
 module.exports = router

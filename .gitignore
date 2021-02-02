@@ -4,3 +4,4 @@ node_modules/
 yarn-error.log
 app/logs
 .idea/
+app/public

@@ -14,7 +14,7 @@
 - 使用`koa-body`来解析前端传过来的json数据和文件数据
 - 使用`koa-parameter`进行前端参数校验
 - 使用`koa-static`来定义前端静态资源文件夹
-- 使用`mongoose`来操作MongoDB
+- 使用`mongoose`来操作MongoDB，除了基础的增删改查，还包含如何解决MongoDB中一对多和多对多的关系
 
 ### 3. 已经实现接口
 - [x] 登录接口

@@ -13,7 +13,9 @@ const app = new Koa()
 // 响应格式化中间件
 async function formatResponse (ctx, next) {
   await next()
-  ctx.body = setResponse(ctx)
+  if (!/\/uploads\/upload_/.test(ctx.path)) {
+    ctx.body = setResponse(ctx)
+  }
 }
 
 // 错误格式化中间件

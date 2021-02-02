@@ -46,7 +46,7 @@ class AnswerController {
       answerer: ctx.state.user._id,
       questionId: ctx.params.questionId
     }).save()
-    ctx.status = answer
+    ctx.body = answer
   }
 
   // 检查回答者

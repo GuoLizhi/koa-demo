@@ -6,7 +6,7 @@ class QuestionController {
     const pageSize = Math.max(+ctx.query.pageSize, 1)
     const pageNo = Math.max(+ctx.query.pageNo - 1, 0)
     const q = new RegExp(ctx.query.q)
-    ctx.body = Question.find({
+    ctx.body = await Question.find({
       $or: [{ title: q }, { description: q }]
     }).limit(pageSize).skip(pageSize * pageNo)
   }
@@ -49,7 +49,7 @@ class QuestionController {
         type: 'string',
         required: true
       },
-      description: {
+      questioner: {
         type: 'string',
         required: true
       }
@@ -58,7 +58,7 @@ class QuestionController {
       ...ctx.request.body,
       questioner: ctx.state.user._id
     }).save()
-    ctx.status = question
+    ctx.body = question
   }
 
   // 更新一个问题
